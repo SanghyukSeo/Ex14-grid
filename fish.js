@@ -9,7 +9,7 @@ let w=100;
 let angle =0;
 let baitSize = 20;
 let fishSize = 90;
-let fr = 140;
+let fr = 60;
 
 function preload() {
   fish1 = loadImage('./images/fish1.png');
@@ -48,8 +48,13 @@ function draw() {
 
 
 function fish(){
+  if(fr>=130){
+    x = x+(mouseX-x)/30;
+    y = y+(mouseY-y)/30;
+  }else{
     x = x+(mouseX-x)/20;
     y = y+(mouseY-y)/20;
+  }
   if(mouseX>=x){
   image(fish1,(x-fishSize/2)-30,y-fishSize/2,fishSize*3/2,fishSize);
     }else{    

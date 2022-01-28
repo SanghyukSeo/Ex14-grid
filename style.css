@@ -13,6 +13,15 @@
     justify-content: center;
     align-items: center;
 }
+.js2 {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
 
 h2{
     color: black;
@@ -24,7 +33,7 @@ h2{
 }
 .main-grid { 
     display: grid;
-    gap:1rem;
+    gap: .5rem;
     grid-auto-columns: 1fr;
     grid-template-areas: 
     'one'
@@ -46,14 +55,13 @@ h2{
 .flex {
     display: flex;
     height:200px;
-    background-color: rebeccapurple;
+    background-color: rgba(230, 230, 230, 0.897);
   }
 
 .grid {
-  color: aliceblue;
-  background-color: aquamarine;
-  padding: 0rem;           /*  def : 2rem; */
-  border-radius: 0rem;
+  background-color: rgb(255, 255, 255);
+  padding: rem;           /*  def : 2rem; */
+  border-radius: rem;
 }
 .grid:nth-child(1){
     grid-area: one;
@@ -72,18 +80,14 @@ h2{
 }
 .grid:nth-child(6){
    grid-area: six;
-   background-color: rgb(38, 150, 44);
 }
 .grid:nth-child(7){
-   background-color: rebeccapurple;
    grid-area: seven;
 }
 .grid:nth-child(8){
-   background-color: rebeccapurple;
    grid-area: eight;
 }
 .grid:nth-child(9){
-   background-color: rebeccapurple;
    grid-area: nine;
 }
 @media (min-width: 768px){
