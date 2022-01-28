@@ -17,14 +17,14 @@ function preload() {
 }
   
 function setup() {
-    let cnv = createCanvas(600, 200);
+    let cnv = createCanvas($("#fish").outerWidth(), $("#fish").outerHeight());
     cnv.parent('fish');
     
    
   frameRate(fr); 
 }
 function windowResized() {
-    resizeCanvas(width, height);
+    resizeCanvas($("#fish").outerWidth(), $("#fish").outerHeight());
   }
 
 
