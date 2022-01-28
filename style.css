@@ -40,6 +40,7 @@ h2{
     padding-block: 2rem;
     width: min(95%,80rem);
     margin-inline: auto;
+
 }
 
 .flex {
@@ -48,9 +49,6 @@ h2{
     background-color: rebeccapurple;
   }
 
-.grid-5 .flex{  
-    height:100%;
-}
 .grid {
   color: aliceblue;
   background-color: aquamarine;
@@ -74,6 +72,7 @@ h2{
 }
 .grid:nth-child(6){
    grid-area: six;
+   background-color: rgb(38, 150, 44);
 }
 .grid:nth-child(7){
    background-color: rebeccapurple;
@@ -86,7 +85,8 @@ h2{
 .grid:nth-child(9){
    background-color: rebeccapurple;
    grid-area: nine;
-}@media (min-width: 768px){
+}
+@media (min-width: 768px){
     .main-grid{
       grid-template-areas: 
       'one one one two two'
@@ -104,5 +104,8 @@ h2{
     'one one one two three three'
     'four four five six six seven' 
     'eight eight five nine nine nine';
+  }
+  .grid-5 .flex{  
+      height:100%;
   }
 }
