@@ -6,7 +6,7 @@ var speed;
 function setup() {
   let cnv2 = createCanvas($("#space").outerWidth(), $("#space").outerHeight());
   cnv2.parent('space');
-for (var i = 0; i < 800; i++) {
+for (var i = 0; i < 500; i++) {
   stars[i] = new Star();
   }
 }
@@ -17,8 +17,13 @@ function windowResized() {
 
 
 function draw() {
-  speed = 1.5;    //map(mouseX, 0, width, 0, 50);
-  background(255);
+  if(mouseX>0&&mouseY>0&&mouseX<$("#space").outerWidth()&&mouseY<$("#space").outerHeight()){
+  speed = map(mouseX,0,$("#space").outerWidth(),1,30); }else{
+    speed =1;
+    
+  }   //map(mouseX, 0, width, 0, 50);
+
+  background('rgb(255, 255, 255)');
   translate(width / 2, height / 2);
   for (var i = 0; i < stars.length; i++) {
     stars[i].update();
@@ -55,10 +60,11 @@ function Star() {
       var py = map(this.y / this.pz, 0, 1, 0, height);
   
       this.pz = this.z;
-  
+     // ellipse(sx,sy,3);
       stroke(0);
+      strokeWeight(1.3);
       line(px, py, sx, sy);
   
-    }
   }
+}
 

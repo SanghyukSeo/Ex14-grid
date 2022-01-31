@@ -19,12 +19,12 @@
     height: 100%;
     position: relative;
     margin: 0 auto;
-    justify-content: center;
-    align-items: center;
+}
+.js2:hover{
+    mix-blend-mode: difference;
 }
 
 h2{
-    color: black;
     position: absolute;
     font-family: Arial, Helvetica, sans-serif;
     margin-left: 1rem;
@@ -32,8 +32,12 @@ h2{
     z-index: 0;
 }
 .main-grid { 
+  overflow: hidden;
+  background-color: rgb(255, 255, 255);
+  height:100vh;
+  width: 100%;
     display: grid;
-    gap: .5rem;
+    gap: 0.5rem;
     grid-auto-columns: 1fr;
     grid-template-areas: 
     'one'
@@ -46,21 +50,52 @@ h2{
     'eight'
     'nine';
 
-    padding-block: 2rem;
-    width: min(95%,80rem);
     margin-inline: auto;
+    /*padding-block: 2rem;
+    */
 
 }
-
-.flex {
-    display: flex;
-    height:200px;
-    background-color: rgba(230, 230, 230, 0.897);
-  }
+#click1{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-direction: column;
+  object-position: center;
+  text-align: center;
+}
+#click1:hover{
+  
+  font-size: 150%;
+}
+#click2{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-direction: column;
+  object-position: center;
+  text-align: center;
+}
+#click2:hover{
+  font-size: 150%;
+}
+#move{
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-direction: column;
+  object-position: center;
+  text-align: center;
+  z-index: 100;
+}
+#move:hover{
+  color: white;
+  background-color: rgba(212, 44, 218, 0.1);
+  font-size: 150%;
+}
 
 .grid {
   background-color: rgb(255, 255, 255);
-  padding: rem;           /*  def : 2rem; */
   border-radius: rem;
 }
 .grid:nth-child(1){
@@ -90,25 +125,57 @@ h2{
 .grid:nth-child(9){
    grid-area: nine;
 }
-@media (min-width: 768px){
+
+.flex {
+    display: flex;
+    position: relative;
+    object-position: center;
+    width: 100%;
+    background-color: rgb(252, 252, 252);
+  }
+
+@media (min-width:10px){
+  
+  .flex {
+    display: flex;
+    position: relative;
+    object-position: center;
+    height:10vh;
+    width: 100%;
+  }
+}
+@media (min-width:768px){
+  .flex {
+      display: flex;
+      position: relative;
+      object-position: center;
+      height:25vh;
+      width: 100%;
+    }
     .main-grid{
       grid-template-areas: 
       'one one one two two'
-      'three four four five five'
-      'six six seven eight eight' 
-      'six six nine nine nine';
+      'three three four four four'
+      'five five six seven seven' 
+      'eight eight six nine nine';
     }
     .grid-6 .flex{  
         height:100%;
     }
   }
-@media (min-width: 950px){
+@media (min-width: 1200px){
   .main-grid{
     grid-template-areas: 
     'one one one two three three'
-    'four four five six six seven' 
+    'four four five six seven seven' 
     'eight eight five nine nine nine';
   }
+  .flex {
+      display: flex;
+      position: relative;
+      object-position: center;
+      height:33.3vh;
+    }
   .grid-5 .flex{  
       height:100%;
   }

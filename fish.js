@@ -1,112 +1,91 @@
 //Blue circle is bait and Yellow circle is fish
 
+var sketch = function(p2){
 
+
+    p2.preload =function(){
+  
+      fish1 = p2.loadImage('./images/fish1.png');
+      fish2 = p2.loadImage('./images/fish2.png');
+    }
+    p2.setup = function(){
+  
+      let cnv = p2.createCanvas($("#fish").outerWidth(), $("#fish").outerHeight());
+      cnv.parent('fish');
+      
+    fish = new Fish(x,y,fish1,fish2,fishSize,xSpeed,ySpeed);//45
+    
+      p2.frameRate(fr);
+    }
+    
+    p2.windowResized= function(){
+      p2.resizeCanvas($("#fish").outerWidth(), $("#fish").outerHeight());
+    }
+  
+    p2.draw = function(){
+      
+    p2.background('rgba(205, 255, 255, 0.3)');
+    
+  if(p2.mouseX>5&&p2.mouseY>10&&p2.mouseX<$("#fish").outerWidth()-5&&p2.mouseY<$("#fish").outerHeight()-10){
+    fish.show();
+  }else{
+  fish.bounce();
+  }
+  
+  
+}
 var click;
-let x= 0;
-let y= 0;
-let a= 0;
-let w=100;
-let angle =0;
-let baitSize = 20;
+let x= 30;
+let y= 30;
 let fishSize = 90;
 let fr = 60;
+var xSpeed = (1, 3);
+var ySpeed = (-3, -1);
 
-function preload() {
-  fish1 = loadImage('./images/fish1.png');
-  fish2 = loadImage('./images/fish2.png');
-}
-  
-function setup() {
-    let cnv = createCanvas($("#fish").outerWidth(), $("#fish").outerHeight());
-    cnv.parent('fish');
-    
-   
-  frameRate(fr); 
-}
-function windowResized() {
-    resizeCanvas($("#fish").outerWidth(), $("#fish").outerHeight());
+
+class Fish{
+  constructor(x,y,fish1,fish2,fishSize,xSpeed,ySpeed){
+    this.x = x;
+    this.y = y;
+    this.fish1 = fish1;
+    this.fish2 = fish2;
+    this.fishSize = fishSize;
+    this.xSpeed= xSpeed;
+    this.ySpeed = ySpeed;
   }
-
-
-function draw() {
-    
-  background('rgba(212, 255, 252, 0.8)');
-  fill('yellow');
- // circle(mouseX, mouseY, baitSize);
-  
-  fish();//bubbleTrigger();
- /* if(click){
-    fishEye();
-    bubbleTrigger();
-  }else{ 
-    x=windowWidth/2;
-    y=windowHeight/2;
-    fish();
-    fishEye();
-  } */
-}
-
-
-function fish(){
-  if(fr>=130){
-    x = x+(mouseX-x)/30;
-    y = y+(mouseY-y)/30;
-  }else{
-    x = x+(mouseX-x)/20;
-    y = y+(mouseY-y)/20;
-  }
-  if(mouseX>=x){
-  image(fish1,(x-fishSize/2)-30,y-fishSize/2,fishSize*3/2,fishSize);
+  show(){
+    this.x = this.x+(p2.mouseX-this.x)/15;
+    this.y = this.y+(p2.mouseY-this.y)/15;
+  if(p2.mouseX>=this.x){
+  p2.image(this.fish1,(this.x-this.fishSize/2)-30,this.y-this.fishSize/2,this.fishSize*3/2,this.fishSize);
     }else{    
-  image(fish2,x-fishSize/2,y-fishSize/2,fishSize*3/2,fishSize);
+  p2.image(this.fish2,this.x-this.fishSize/2,this.y-this.fishSize/2,this.fishSize*3/2,this.fishSize);
+    }
+  }
+    bounce(){
+     
 
-  /*  
-fill('white');
-  rect(x-fishSize/2,y-fishSize/2, fishSize, fishSize, fishSize);
-  
-fill('black');
-
-    line(x,y,mouseX,mouseY);    
-  if(abs(mouseX-x)<(baitSize+fishSize)/2&&abs(mouseY-y)<(baitSize+fishSize)/2){
-  click=false;
-  }*/        //Fish eat bait, return to the center.
-}
-}
-
-function fishEye(){
-  
-  x2 = x+(mouseX-x)/15*(2/3);
-  y2 = y+(mouseY-y)/15*(2/3);
-  
- // circle(x2,y2,10);//fish eye
-} 
-function bubbleTrigger(){
-  circle(windowWidth/10,windowHeight/2,30);    //collision detection comming soon..
-  translate(width / 10+50, height / 2);
-  angle++;
-  rotate(angle);
-  if(angle %7 ==0){
-    bubble();
-    angle=1;
+ this.x += this.xSpeed;
+  this.y += this.ySpeed;
+     
+  if (this.x < 10 ||
+    this.x > p2.width - 20) {
+     this.xSpeed *= -1;
+  }
+  if (this.y < 10 ||
+    this.y > p2.height - 20) {
+     this.ySpeed *= -1;
+  }
+     if(this.xSpeed>0){
+        p2.image(this.fish1,(this.x-this.fishSize/2)-30,this.y-this.fishSize/2,this.fishSize*3/2,this.fishSize);
+     }else{
+       
+        p2.image(this.fish2,this.x-this.fishSize/2,this.y-this.fishSize/2,this.fishSize*3/2,this.fishSize);
      }
-  console.log(angle);
-  rect(0, 0, w, 10);
-}  
-function bubble(){
-   
-  if(mouseX>=x){    
-    a = a-10;
-  circle(x+50,y+a,15);  
-  }else{
-    a = a-10;
-  circle(x-40,y+a,15);
-    }  
+     
 }
 
-function mousePressed(){
-  click=true; 
 }
+}
+var fish = new p5(sketch);
 
-function doubleClicked(){
-  click=false;
-}
