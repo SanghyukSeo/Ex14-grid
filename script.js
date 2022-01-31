@@ -24,4 +24,13 @@ let click=0;
     })
 
     $("#move").draggable();
+
+
+    const box = document.querySelector('.box');
+    document.addEventListener('mousemove', (e)=>{
+        if(mouseX>100||mouseY>100){
+        box.style.top = e.clientY-500 + "px";
+        }
+    })
+
 })

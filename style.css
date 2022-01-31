@@ -12,6 +12,7 @@
     margin: 0 auto;
     justify-content: center;
     align-items: center;
+    z-index:10;
 }
 .js2 {
     display: flex;
@@ -19,6 +20,17 @@
     height: 100%;
     position: relative;
     margin: 0 auto;
+    z-index: 10;
+}
+.js3 {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    z-index:0;
 }
 .js2:hover{
     mix-blend-mode: difference;
@@ -87,11 +99,37 @@ h2{
   object-position: center;
   text-align: center;
   z-index: 100;
+  background-color: rgba(212, 44, 218, 0);
 }
 #move:hover{
   color: white;
   background-color: rgba(212, 44, 218, 0.1);
   font-size: 150%;
+}
+
+.js3:hover .box{
+  visibility: visible;
+}
+#box{
+  display: flex;
+  position: absolute;
+  height: 200px;
+  width: 100%;
+  color: white;
+  font-size: 120%;
+  text-transform: uppercase;
+  justify-content: center;
+  flex-direction: column;
+  object-position: center;
+  text-align: center;
+  z-index: 0;
+}
+#box:hover{
+  display: flex;
+  position: absolute;
+  height: 30%;
+  width: 100%;
+  background-color: rgba(212, 44, 218, 0.1);
 }
 
 .grid {
