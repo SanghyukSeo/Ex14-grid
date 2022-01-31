@@ -19,14 +19,13 @@ var mouseFollow3 = function(p2){
   
     p2.draw = function(){
       
-  
+      
         var canvasDiv = document.getElementById('mouseFollow3');
         var w=canvasDiv.offsetWidth, h= canvasDiv.offsetHeight;
         p2.background(255);
         p2.push();
         p2.fill('white');
-        Math.floor(p2.map(p2.mouseY,0,h,30,80));
-        p2.star(p2.mouseX, p2.mouseY,  Math.floor(p2.map(p2.mouseX,0,w,50,90)), Math.floor(p2.map(p2.mouseY,0,h,50,90)), 30);
+        p2.star(p2.mouseX-w/2, p2.mouseY-h/2,  Math.floor(p2.map(p2.mouseX,0,w,50,90)), Math.floor(p2.map(p2.mouseY,0,h,50,90)), 30);
         p2.pop();
 
 
